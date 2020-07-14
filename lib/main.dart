@@ -16,8 +16,8 @@ void main() {
   ));
 }
 
-double _sigmaX = 25.0; // from 0-10
-double _sigmaY = 25.0; // from 0-10
+double _sigmaX = 30.0; // from 0-10
+double _sigmaY = 30.0; // from 0-10
 double _opacity = 0.5; // from 0-1.0
 
 class FirstScreen extends StatelessWidget {
@@ -48,7 +48,7 @@ class FirstScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           new Text(
-                            "15:36",
+                            "12:45",
                             style: new TextStyle(
                                 fontSize: 100.0,
                                 color: const Color(0xFFeaeaea),
