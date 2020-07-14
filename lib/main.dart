@@ -3,7 +3,7 @@ import 'dart:ui';
 
 void main() {
   runApp(MaterialApp(
-    title: 'pangolin dm alpha',
+    title: 'pangolindm',
     // Start the app with the "/" named route. In this case, the app starts
     // on the FirstScreen widget.
     initialRoute: '/',
@@ -16,9 +16,9 @@ void main() {
   ));
 }
 
-double _sigmaX = 25.0; // from 0-10
-double _sigmaY = 25.0; // from 0-10
-double _opacity = 0.3; // from 0-1.0
+double _sigmaX = 30.0; // from 0-10
+double _sigmaY = 30.0; // from 0-10
+double _opacity = 0.5; // from 0-1.0
 
 class FirstScreen extends StatelessWidget {
   @override
