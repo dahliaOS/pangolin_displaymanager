@@ -21,7 +21,6 @@ void main() {
   ));
 }
 
-<<<<<<< HEAD
 class SplashScreen extends StatefulWidget {
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -49,14 +48,9 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 }
 
-double _sigmaX = 25.0; // from 0-10
-double _sigmaY = 25.0; // from 0-10
-double _opacity = 0.1; // from 0-1.0
-=======
 double _sigmaX = 30.0; // from 0-10
 double _sigmaY = 30.0; // from 0-10
 double _opacity = 0.5; // from 0-1.0
->>>>>>> master
 
 class FirstScreen extends StatelessWidget {
   @override
