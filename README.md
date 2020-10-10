@@ -1,16 +1,26 @@
-# pangolin_displaymanager
+<p align="center">
+<a href="https://dahliaos.io">Website</a> ●
+<a href="https://discord.gg/7qVbJHR">Discord</a> ●
+<a href="https://github.com/dahlia-os/releases/releases">Releases</a> ●
+<a href="https://paypal.me/officialdahliaos">Donate</a> ●
+<a href="https://github.com/dahlia-os/documentation">Documentation</a>
 
-A new Flutter project.
+# Pangolin Display Manager
+![GitHub issues](https://img.shields.io/github/issues/dahlia-os/pangolin_displaymanager?color=brightgreen)
+![GitHub](https://img.shields.io/github/license/dahlia-os/pangolin_displaymanager?color=bright-green)
 
-## Getting Started
+ - **Pangolin Display Manager**
 
-This project is a starting point for a Flutter application.
+## Contribute
 
-A few resources to get you started if this is your first Flutter project:
+If you're wondering how to contribute to the project, please refer to [CONTRIBUTING.md](./CONTRIBUTING.md)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## License
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<p align="left">
+  <img width="40%" src="https://github.com/dahlia-os/brand/blob/master/Logo%20PNGs/dahliaOS%20logo%20with%20text%20(drop%20shadow).png"
+</p>
+
+Copyright @ 2019-2020 The dahliaOS Authors contact@dahliaos.io
+
+This project is licensed under the [Apache 2.0 license](/LICENSE)
