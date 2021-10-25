@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'dart:async';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -31,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 1),
+        Duration(milliseconds: 1500),
         () => Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (BuildContext context) => FirstScreen())));
   }
@@ -59,7 +60,7 @@ class FirstScreen extends StatelessWidget {
         body: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('lib/images/forest.jpg'),
+                image: AssetImage('lib/images/modern.png'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -117,7 +118,7 @@ class SecondScreen extends StatelessWidget {
         body: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('lib/images/forest.jpg'),
+                image: AssetImage('lib/images/modern.png'),
                 fit: BoxFit.cover,
               ),
             ),
