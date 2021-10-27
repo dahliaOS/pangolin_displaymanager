@@ -60,7 +60,7 @@ class FirstScreen extends StatefulWidget {
 
 class _FirstScreenState extends State<FirstScreen> {
   String _timeString;
-
+String _dateString;
   @override
   void initState() {
     _timeString = _formatDateTime(DateTime.now());
@@ -102,7 +102,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                 fontFamily: "Roboto"),
                           ),
                           new Text(
-                            "Monday, July 6, 2020",
+                            _dateString,
                             style: new TextStyle(
                                 fontSize: 18.0,
                                 color: const Color(0xFFeaeaea),
@@ -123,13 +123,20 @@ class _FirstScreenState extends State<FirstScreen> {
    void _getTime() {
     final DateTime now = DateTime.now();
     final String formattedDateTime = _formatDateTime(now);
+    final String formattedDate = _formatDate(now);
     setState(() {
       _timeString = formattedDateTime;
+      _dateString = formattedDate;
     });
   }
 
+
+
   String _formatDateTime(DateTime dateTime) {
     return DateFormat('h:mm').format(dateTime);
+  }
+    String _formatDate(DateTime dateTime) {
+    return DateFormat('EEEE, MMMM d').format(dateTime);
   }
 }
 
