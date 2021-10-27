@@ -49,11 +49,24 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 }
 
-double _sigmaX = 30.0; // from 0-10
-double _sigmaY = 30.0; // from 0-10
-double _opacity = 0.5; // from 0-1.0
+double _sigmaX = 5.0; // from 0-10
+double _sigmaY = 5.0; // from 0-10
+double _opacity = 0.0; // from 0-1.0
 
-class FirstScreen extends StatelessWidget {
+class FirstScreen extends StatefulWidget {
+  @override
+  State<FirstScreen> createState() => _FirstScreenState();
+}
+
+class _FirstScreenState extends State<FirstScreen> {
+  String _timeString;
+
+  @override
+  void initState() {
+    _timeString = _formatDateTime(DateTime.now());
+    Timer.periodic(Duration(seconds: 1), (Timer t) => _getTime());
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,7 +94,7 @@ class FirstScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           new Text(
-                            "12:45",
+                            _timeString,
                             style: new TextStyle(
                                 fontSize: 100.0,
                                 color: const Color(0xFFeaeaea),
@@ -107,6 +120,17 @@ class FirstScreen extends StatelessWidget {
               ),
             )));
   }
+   void _getTime() {
+    final DateTime now = DateTime.now();
+    final String formattedDateTime = _formatDateTime(now);
+    setState(() {
+      _timeString = formattedDateTime;
+    });
+  }
+
+  String _formatDateTime(DateTime dateTime) {
+    return DateFormat('h:mm').format(dateTime);
+  }
 }
 
 var _controller = TextEditingController();
@@ -131,7 +155,7 @@ class SecondScreen extends StatelessWidget {
                 },
                 // The custom button
                 child: Container(
-                  color: Colors.black.withOpacity(0.5),
+                  color: Colors.black.withOpacity(_opacity),
                   child: new Center(
                     child: new Column(
                         mainAxisAlignment: MainAxisAlignment.center,
