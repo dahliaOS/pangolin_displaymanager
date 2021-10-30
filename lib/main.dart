@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'dart:async';
 import 'package:intl/intl.dart';
+import 'package:pangolin_displaymanager/user_panel.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -102,7 +103,7 @@ String _dateString;
                                 fontFamily: "Roboto"),
                           ),
                           new Text(
-                            _dateString,
+                            _dateString==null?"":_dateString,
                             style: new TextStyle(
                                 fontSize: 18.0,
                                 color: const Color(0xFFeaeaea),
@@ -146,6 +147,18 @@ class SecondScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: IconButton(onPressed: (){showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Expanded(
+                      child: Center(child: ClipRRect(
+                      borderRadius:
+                          new BorderRadius.all(new Radius.circular(5.0)),
+                      child:Container(height: 540,width: 640,color: Colors.white,child: UserPanel(),),))
+  
+                    );
+                  },
+                );},icon:Icon(Icons.supervised_user_circle, color: Colors.white,)),
         body: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -202,7 +215,9 @@ class SecondScreen extends StatelessWidget {
                                     obscureText: true,
                                     autofocus: true,
                                     decoration: InputDecoration(
-                                      hintStyle: TextStyle(color: Colors.grey),
+                                      
+                                      border: OutlineInputBorder(),
+                                      hintStyle: TextStyle(color: Colors.white),
                                       hintText: "Password",
                                       suffixIcon: IconButton(
                                         onPressed: () => _controller.clear(),
