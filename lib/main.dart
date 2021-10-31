@@ -19,7 +19,7 @@ void main() {
       // When navigating to the "/second" route, build the SecondScreen widget.
       '/second': (context) => SecondScreen(),
     },
-    theme: new ThemeData(primarySwatch: Colors.grey),
+    theme: new ThemeData(primarySwatch: Colors.deepOrange),
   ));
 }
 
