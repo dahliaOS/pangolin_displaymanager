@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'dart:async';
+import 'package:intl/intl.dart';
+import 'package:pangolin_displaymanager/user_panel.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -17,7 +19,7 @@ void main() {
       // When navigating to the "/second" route, build the SecondScreen widget.
       '/second': (context) => SecondScreen(),
     },
-    theme: new ThemeData(primarySwatch: Colors.grey),
+    theme: new ThemeData(primarySwatch: Colors.deepOrange),
   ));
 }
 
@@ -31,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 1),
+        Duration(milliseconds: 1500),
         () => Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (BuildContext context) => FirstScreen())));
   }
@@ -48,18 +50,31 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 }
 
-double _sigmaX = 30.0; // from 0-10
-double _sigmaY = 30.0; // from 0-10
-double _opacity = 0.5; // from 0-1.0
+double _sigmaX = 5.0; // from 0-10
+double _sigmaY = 5.0; // from 0-10
+double _opacity = 0.0; // from 0-1.0
 
-class FirstScreen extends StatelessWidget {
+class FirstScreen extends StatefulWidget {
+  @override
+  State<FirstScreen> createState() => _FirstScreenState();
+}
+
+class _FirstScreenState extends State<FirstScreen> {
+  String _timeString;
+String _dateString;
+  @override
+  void initState() {
+    _timeString = _formatDateTime(DateTime.now());
+    Timer.periodic(Duration(seconds: 1), (Timer t) => _getTime());
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('lib/images/forest.jpg'),
+                image: AssetImage('lib/images/modern.png'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -80,7 +95,7 @@ class FirstScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           new Text(
-                            "12:45",
+                            _timeString,
                             style: new TextStyle(
                                 fontSize: 100.0,
                                 color: const Color(0xFFeaeaea),
@@ -88,7 +103,7 @@ class FirstScreen extends StatelessWidget {
                                 fontFamily: "Roboto"),
                           ),
                           new Text(
-                            "Monday, July 6, 2020",
+                            _dateString==null?"":_dateString,
                             style: new TextStyle(
                                 fontSize: 18.0,
                                 color: const Color(0xFFeaeaea),
@@ -106,6 +121,24 @@ class FirstScreen extends StatelessWidget {
               ),
             )));
   }
+   void _getTime() {
+    final DateTime now = DateTime.now();
+    final String formattedDateTime = _formatDateTime(now);
+    final String formattedDate = _formatDate(now);
+    setState(() {
+      _timeString = formattedDateTime;
+      _dateString = formattedDate;
+    });
+  }
+
+
+
+  String _formatDateTime(DateTime dateTime) {
+    return DateFormat('h:mm').format(dateTime);
+  }
+    String _formatDate(DateTime dateTime) {
+    return DateFormat('EEEE, MMMM d').format(dateTime);
+  }
 }
 
 var _controller = TextEditingController();
@@ -114,10 +147,22 @@ class SecondScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: IconButton(onPressed: (){showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return 
+                      Center(child: ClipRRect(
+                      borderRadius:
+                          new BorderRadius.all(new Radius.circular(5.0)),
+                      child:Container(height: 540,width: 640,color: Colors.white,child: UserPanel(),),))
+  
+                    ;
+                  },
+                );},icon:Icon(Icons.supervised_user_circle, color: Colors.white,)),
         body: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('lib/images/forest.jpg'),
+                image: AssetImage('lib/images/modern.png'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -130,7 +175,7 @@ class SecondScreen extends StatelessWidget {
                 },
                 // The custom button
                 child: Container(
-                  color: Colors.black.withOpacity(0.5),
+                  color: Colors.black.withOpacity(_opacity),
                   child: new Center(
                     child: new Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -170,7 +215,9 @@ class SecondScreen extends StatelessWidget {
                                     obscureText: true,
                                     autofocus: true,
                                     decoration: InputDecoration(
-                                      hintStyle: TextStyle(color: Colors.grey),
+                                      
+                                      border: OutlineInputBorder(),
+                                      hintStyle: TextStyle(color: Colors.white),
                                       hintText: "Password",
                                       suffixIcon: IconButton(
                                         onPressed: () => _controller.clear(),
