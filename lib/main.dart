@@ -150,13 +150,13 @@ class SecondScreen extends StatelessWidget {
       floatingActionButton: IconButton(onPressed: (){showDialog(
                   context: context,
                   builder: (BuildContext context) {
-                    return Expanded(
-                      child: Center(child: ClipRRect(
+                    return 
+                      Center(child: ClipRRect(
                       borderRadius:
                           new BorderRadius.all(new Radius.circular(5.0)),
                       child:Container(height: 540,width: 640,color: Colors.white,child: UserPanel(),),))
   
-                    );
+                    ;
                   },
                 );},icon:Icon(Icons.supervised_user_circle, color: Colors.white,)),
         body: Container(
